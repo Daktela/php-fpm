@@ -1,10 +1,10 @@
-FROM alpine:3
+FROM alpine:3-arm64
 
 # Set PHP version
 ENV PHPV 81
 
-# Install PHP, NGINX and other packages
-RUN apk add nginx php$PHPV-fpm php$PHPV-bcmath php$PHPV-cli php$PHPV-common php$PHPV-gd php$PHPV-intl php$PHPV-json php$PHPV-ldap \
+# Install PHP and other packages
+RUN apk add php$PHPV-fpm php$PHPV-bcmath php$PHPV-cli php$PHPV-common php$PHPV-gd php$PHPV-intl php$PHPV-json php$PHPV-ldap \
 			php$PHPV-mbstring php$PHPV-mysqlnd php$PHPV-pdo php$PHPV-pear php$PHPV-opcache ncdu && rm -rf /var/cache/apk/*
 
 # Add user php-fpm
