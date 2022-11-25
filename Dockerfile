@@ -31,6 +31,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-tokenizer \
     php$PHPV-calendar \
     php$PHPV-bcmath \
+    php$PHPV-intl \
     php$PHPV-pecl-redis \
     php$PHPV-pecl-xdebug
 
