@@ -1,28 +1,38 @@
-FROM php:8.1-fpm-alpine
+FROM alpine:latest
 
 # Set PHP version
 ENV PHPV 81
 
 # Install packages
-RUN apk add --no-cache ncdu icu-dev icu-data-full $PHPIZE_DEPS
+RUN apk add --no-cache ncdu
 
-# Install required libs for PHP extensions
-#RUN apk add --no-cache libxml2-dev libzip-dev libpng-dev libressl-dev
-
-# Install PHP extensions
-RUN pecl install xdebug
-RUN docker-php-ext-install intl pdo_mysql
-RUN docker-php-ext-configure intl pdo_mysql --host=$BUILDPLATFORM --build=$BUILDPLATFORM --target=$TARGETPLATFORM 
-
-RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=intl/extension=intl/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=curl/extension=curl/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=gd/extension=gd/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=imap/extension=imap/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=ldap/extension=ldap/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=msbrting/extension=msbrting/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=mysqli/extension=mysqli/' /usr/local/etc/php.ini && \
-	sed -i.bkp 's/^;extension=pdo_mysql/extension=pdo_mysql/' /usr/local/etc/php.ini
+# Installing PHP
+RUN apk add --no-cache php$PHPV \
+    php$PHPV-common \
+    php$PHPV-fpm \
+    php$PHPV-pdo \
+    php$PHPV-opcache \
+    php$PHPV-zip \
+    php$PHPV-phar \
+    php$PHPV-iconv \
+    php$PHPV-cli \
+    php$PHPV-curl \
+    php$PHPV-openssl \
+    php$PHPV-mbstring \
+    php$PHPV-tokenizer \
+    php$PHPV-fileinfo \
+    php$PHPV-json \
+    php$PHPV-xml \
+    php$PHPV-xmlwriter \
+    php$PHPV-simplexml \
+    php$PHPV-dom \
+    php$PHPV-pdo_mysql \
+    php$PHPV-pdo_sqlite \
+    php$PHPV-tokenizer \
+    php$PHPV-calendar \
+    php$PHPV-bcmath \
+    php$PHPV-pecl-redis \
+    php$PHPV-pecl-xdebug
 
 # Add user php-fpm
 RUN addgroup -g 1000 www
