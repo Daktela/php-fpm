@@ -26,6 +26,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-xmlwriter \
     php$PHPV-simplexml \
     php$PHPV-dom \
+    php$PHPV-gd \
     php$PHPV-pdo_mysql \
     php$PHPV-pdo_sqlite \
     php$PHPV-tokenizer \
