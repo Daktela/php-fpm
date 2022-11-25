@@ -24,6 +24,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-json \
     php$PHPV-xml \
     php$PHPV-xmlwriter \
+    php$PHPV-xmlreader \
     php$PHPV-simplexml \
     php$PHPV-dom \
     php$PHPV-gd \
