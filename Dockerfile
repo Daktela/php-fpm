@@ -39,12 +39,11 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-pecl-xdebug
 
 # Add user php-fpm
-RUN addgroup -g 1000 www
-RUN adduser -u 1000 -H -D -G www www
-RUN addgroup www wheel
+RUN adduser -u 82 -D -S -G www-data www-data
+ENV USER 82
 
 # Add PHP-FPM pool config
-COPY ./www.conf /etc/php-fpm.d/www.conf
+COPY ./www.conf /etc/php81/php-fpm.d/www.conf
 
 # Prepare folders for FPM
 RUN mkdir -p /var/log/php-fpm/ &&\
