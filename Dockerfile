@@ -4,7 +4,9 @@ FROM alpine:latest
 ENV PHPV 81
 
 # Install packages
-RUN apk add --no-cache ncdu
+RUN apk update && \
+    apk upgrade --no-cache && \
+    apk add --no-cache ncdu
 
 # Installing PHP
 RUN apk add --no-cache php$PHPV \
