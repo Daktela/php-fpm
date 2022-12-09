@@ -38,6 +38,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-sockets \
     php$PHPV-intl \
     php$PHPV-pecl-redis \
+    php$PHPV-posix \
     php$PHPV-pecl-xdebug
 
 # Add user php-fpm
