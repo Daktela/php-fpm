@@ -37,6 +37,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-bcmath \
     php$PHPV-sockets \
     php$PHPV-intl \
+    php$PHPV-soap \
     php$PHPV-pecl-redis \
     php$PHPV-posix \
     php$PHPV-pecl-xdebug
