@@ -43,15 +43,17 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-pecl-xdebug
 
 # Add user php-fpm
-RUN adduser -u 82 -D -S -G www-data www-data
-ENV USER 82
+RUN adduser -u 82 -D -s /bin/ash -G www-data www-data
+ENV USER www-data
 
 # Add PHP-FPM pool config
 COPY ./www.conf /etc/php81/php-fpm.d/www.conf
 
 # Prepare folders for FPM
 RUN mkdir -p /var/log/php-fpm/ &&\
-    mkdir /run/php-fpm/
+    mkdir /run/php-fpm/ &&\
+    chown $USER:$USER /run/php-fpm/ &\
+    chown $USER:$USER /var/log/php-fpm/ 
 
 
 EXPOSE 9000
