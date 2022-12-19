@@ -52,7 +52,7 @@ COPY ./www.conf /etc/php81/php-fpm.d/www.conf
 # Prepare folders for FPM
 RUN mkdir -p /var/log/php-fpm/ &&\
     mkdir /run/php-fpm/ &&\
-    chown $USER:$USER /run/php-fpm/ &\
+    chown $USER:$USER /run/php-fpm/ &&\
     chown $USER:$USER /var/log/php-fpm/ 
 
 
