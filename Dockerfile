@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Set PHP version
-ENV PHPV 81
+ENV PHPV 82
 
 # Install packages
 RUN apk update && \
