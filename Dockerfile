@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Set PHP version
-ENV PHPV=82
+ENV PHPV=84
 
 # Install packages
 RUN apk update && \
@@ -43,20 +43,20 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-pecl-xdebug
 
 # Symlink PHP
-RUN ln -s /usr/bin/php82 /usr/bin/php
+RUN ln -s /usr/bin/php$PHPV /usr/bin/php
 
 # Add user php-fpm
-RUN adduser -u 82 -D -s /bin/ash -G www-data www-data
+RUN adduser -u $PHPV -D -s /bin/ash -G www-data www-data
 ENV USER=www-data
 
 # Add PHP-FPM pool config
-COPY ./www.conf /etc/php82/php-fpm.d/www.conf
+COPY ./www.conf /etc/php$PHPV/php-fpm.d/www.conf
 
 # Prepare folders for FPM
 RUN mkdir -p /var/log/php-fpm/ &&\
     mkdir /run/php-fpm/ &&\
     chown $USER:$USER /run/php-fpm/ &&\
-    chown $USER:$USER /var/log/php-fpm/ 
+    chown $USER:$USER /var/log/php-fpm/
 
 
 EXPOSE 9000
