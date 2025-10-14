@@ -18,6 +18,7 @@ RUN apk add --no-cache php$PHPV \
     php$PHPV-phar \
     php$PHPV-iconv \
     php$PHPV-cli \
+    php$PHPV-ctype \
     php$PHPV-curl \
     php$PHPV-openssl \
     php$PHPV-mbstring \
